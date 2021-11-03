@@ -1,6 +1,6 @@
 export function App() {
   return (
-    <div>Taste</div>
+    <div className="text-red-600">Taste</div>
   );
 }
 
