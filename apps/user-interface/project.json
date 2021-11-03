@@ -1,0 +1,72 @@
+{
+  "root": "apps/user-interface",
+  "sourceRoot": "apps/user-interface/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/user-interface",
+        "index": "apps/user-interface/src/index.html",
+        "baseHref": "/",
+        "main": "apps/user-interface/src/main.tsx",
+        "polyfills": "apps/user-interface/src/polyfills.ts",
+        "tsConfig": "apps/user-interface/tsconfig.app.json",
+        "assets": [
+          "apps/user-interface/src/favicon.ico",
+          "apps/user-interface/src/assets"
+        ],
+        "styles": ["apps/user-interface/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/user-interface/src/environments/environment.ts",
+              "with": "apps/user-interface/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "user-interface:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "user-interface:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/user-interface/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/user-interface"],
+      "options": {
+        "jestConfig": "apps/user-interface/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

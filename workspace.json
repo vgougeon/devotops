@@ -1,4 +1,7 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "user-interface": "apps/user-interface",
+    "user-interface-e2e": "apps/user-interface-e2e"
+  }
 }

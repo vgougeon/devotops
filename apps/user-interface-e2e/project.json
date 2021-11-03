@@ -1,0 +1,29 @@
+{
+  "root": "apps/user-interface-e2e",
+  "sourceRoot": "apps/user-interface-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/user-interface-e2e/cypress.json",
+        "devServerTarget": "user-interface:serve",
+        "tsConfig": "apps/user-interface-e2e/tsconfig.json"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "user-interface:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/user-interface-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["user-interface"]
+}
