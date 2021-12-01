@@ -15,7 +15,7 @@ export default class Dots {
         container!.style.height = '600px'
         this.app = new PIXI.Application({
             resizeTo: container,
-            antialias: true,
+            // antialias: true,
             transparent: true,
         })
         this.container = new PIXI.Container()
@@ -24,7 +24,7 @@ export default class Dots {
         shockwave.time = 0.02
         shockwave.brightness = 1.6
         shockwave.amplitude = 15
-        this.container.filters = [shockwave, new GlowFilter({ outerStrength: 2})]
+        this.container.filters = [new GlowFilter({ outerStrength: 2}), shockwave]
         container?.appendChild(this.app.view)
         this.app.start();
         this.app.stage.addChild(this.container)
@@ -52,7 +52,7 @@ export default class Dots {
 
     generateDots() {
         this.container.removeChildren()
-        const space = 20
+        const space = 25
         for (let x = 0; x < this.app.view.width / space; x++) {
             for (let y = 0; y < this.height / space; y++) {
                 new Dot(this.container, x, y)

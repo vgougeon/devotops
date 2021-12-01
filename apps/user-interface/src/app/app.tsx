@@ -13,7 +13,9 @@ export function App() {
   return (
     <main>
       <Banner>
-        <div className="w-full max-w-lg">
+        <motion.div initial={{ opacity: 0, x: -50 }} 
+        animate={{ opacity: 1, x: 0}} transition={{ duration: 3, ease: 'backOut' }}
+        className="relative w-full max-w-lg">
           <RiServerLine size={82} />
           <h1 className="flex text-6xl font-semibold tracking-tighter">
             Devotops
@@ -24,22 +26,21 @@ export function App() {
           </p>
           <div className="flex space-x-4">
             <motion.button whileHover={{ scale: 1.02 }}
-            className="mt-5 white-button big-button">Déployer mon projet</motion.button>
+              className="mt-5 white-button big-button">Déployer mon projet</motion.button>
             <motion.button whileHover={{ scale: 1.02 }}
-            className="mt-5 gray-button big-button">Mon espace</motion.button>
+              className="mt-5 gray-button big-button">Mon espace</motion.button>
           </div>
-          <div className="absolute bottom-0 flex items-center h-12 mt-auto">
-            <span className="text-xs italic opacity-75">works with</span>
-            <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
-          </div>
-          
+        </motion.div>
+        <div className="absolute bottom-0 flex items-center h-12 mt-auto">
+          <span className="text-xs italic opacity-75">works with</span>
+          <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
         </div>
       </Banner>
-      <div className="w-full h-32 bg-cgray-900">
+      <div className="w-full h-32 shadow-lg bg-cgray-900">
         <div className="flex items-center w-full h-full mx-auto space-x-20 max-w">
           {TECHNOLOGIES.map(tech =>
-            <motion.img alt={ tech.name }
-              whileHover={{ filter: 'grayscale(0)', scale: 1.2, transition: { duration: 0.5, ease: 'circOut' }}}
+            <motion.img alt={tech.name}
+              whileHover={{ filter: 'grayscale(0)', scale: 1.2, transition: { duration: 0.5, ease: 'circOut' } }}
               src={tech.src} className="object-contain h-12 grayscale filter" />
           )}
         </div>
