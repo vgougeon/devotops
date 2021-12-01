@@ -33,15 +33,15 @@
 }
 
 .white-button {
-    @apply shadow-lg text-sm px-3 py-0.5 bg-white text-black font-semibold h-10 rounded bg-gradient-to-b from-gray-200 to-white hover:from-blue-500 hover:to-blue-600 hover:text-white;
+    @apply shadow-lg text-sm px-3 py-0.5 text-black font-semibold h-10 rounded bg-white hover:bg-blue-600 hover:text-white;
 }
 
 .gray-button {
-    @apply shadow-lg text-sm px-3 py-0.5 bg-cgray-800 hover:bg-cgray-900 text-white font-semibold h-10 rounded;
+    @apply shadow-lg text-sm px-3 py-0.5 bg-cgray-900 hover:bg-black text-white font-semibold h-10 rounded;
 }
 
 .big-button {
-    @apply h-12 px-4 text-base;
+    @apply h-14 px-6 text-base;
 }
 
 @keyframes fade-in {
