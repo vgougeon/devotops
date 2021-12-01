@@ -2,7 +2,6 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
-    "user-interface": "apps/user-interface",
-    "user-interface-e2e": "apps/user-interface-e2e"
+    "user-interface": "apps/user-interface"
   }
 }

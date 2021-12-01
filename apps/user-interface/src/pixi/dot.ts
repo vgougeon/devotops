@@ -1,9 +1,9 @@
-import { gsap, Power3 } from 'gsap';
+import { gsap, Power3, Elastic } from 'gsap';
 import * as PIXI from 'pixi.js';
 
 export default class Dot {
     initialSpacing = 20
-    initialRadius = 2
+    initialRadius = 1.5
     spacing = this.initialSpacing
     radius = this.initialRadius
     graphics: PIXI.Graphics = new PIXI.Graphics
@@ -14,8 +14,10 @@ export default class Dot {
         this.graphics.endFill()
         this.graphics.alpha = x * 0.05
         const distance = x + y
-        gsap.to(this.graphics, 6, {x: this.graphics.position.x + distance * 7, ease: Power3.easeInOut, yoyo: true, repeat: -1 })
-        gsap.to(this.graphics, 6, {y: this.graphics.position.y + Math.random()* 400, ease: Power3.easeInOut, yoyo: true, repeat: -1 })
+        // gsap.to(this.graphics, 6, {x: this.graphics.position.x + distance * 7, ease: Power3.easeInOut, yoyo: true, repeat: -1 })
+        const tl = gsap.timeline({repeat: -1, repeatDelay: 0, yoyo: true});
+        tl.to(this.graphics, 6, {y: this.graphics.position.y + Math.random()* 400, ease: Elastic.easeInOut.config(0.5, 0.3) })
+        tl.to(this.graphics, 4, {x: this.graphics.position.x + (Math.random()* 200) -100, ease: Elastic.easeInOut.config(0.5, 0.3) })
         container.addChild(this.graphics)
     }
 }

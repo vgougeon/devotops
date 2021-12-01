@@ -17,6 +17,11 @@
     width: 100vw;
 }
 
+.max-w {
+    width: 100%;
+    max-width: 1500px;
+}
+
 .banner {
     height: 600px;
     max-height: 600px;
@@ -28,7 +33,11 @@
 }
 
 .white-button {
-    @apply shadow-lg text-sm px-3 py-0.5 bg-white text-black font-semibold h-10 rounded-lg bg-gradient-to-b from-gray-200 to-white hover:from-blue-500 hover:to-blue-600 hover:text-white;
+    @apply shadow-lg text-sm px-3 py-0.5 bg-white text-black font-semibold h-10 rounded bg-gradient-to-b from-gray-200 to-white hover:from-blue-500 hover:to-blue-600 hover:text-white;
+}
+
+.gray-button {
+    @apply shadow-lg text-sm px-3 py-0.5 bg-cgray-800 hover:bg-cgray-900 text-white font-semibold h-10 rounded;
 }
 
 .big-button {

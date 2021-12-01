@@ -1,28 +1,53 @@
-import { useLayoutEffect, useRef } from "react";
-import Dots from "../pixi/dots";
+import Banner from "../components/layout/banner";
+import { motion } from 'framer-motion';
+import { RiServerLine } from 'react-icons/ri'
 
+const TECHNOLOGIES = [
+  { name: 'React', src: '/assets/technologies/react.webp' },
+  { name: 'Angular', src: '/assets/technologies/angular.png' },
+  { name: 'Vue', src: '/assets/technologies/vue.png' },
+  { name: 'Next', src: '/assets/technologies/next.png' },
+  { name: 'Node', src: '/assets/technologies/node.png' },
+]
 export function App() {
-  const ref = useRef<HTMLDivElement>(null)
-  useLayoutEffect(() => {
-    new Dots(ref.current!)
-  }, [])
   return (
-    <div ref={ref} className="banner w-full bg-gradient-to-b from-blue-900 to-blue-600">
-      <div className="absolute h-full w-full flex items-center justify-around top-0 left-0 text-white">
+    <main>
+      <Banner>
         <div className="w-full max-w-lg">
-          <h1 className="text-6xl font-semibold tracking-tighter flex">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 8v4h-20v-4h20zm2-2h-24v8h24v-8zm-21 5l.863-2h1.275l-.863 2h-1.275zm2.066 0l.864-2h1.275l-.863 2h-1.276zm2.067 0l.863-2h1.275l-.864 2h-1.274zm2.066 0l.863-2h1.274l-.863 2h-1.274zm3.341 0h-1.274l.863-2h1.275l-.864 2zm7.46 0c-.552 0-1-.448-1-1s.448-1 1-1c.553 0 1 .448 1 1s-.447 1-1 1zm2 7v4h-20v-4h20zm2-2h-24v8h24v-8zm-21 5l.863-2h1.275l-.863 2h-1.275zm2.066 0l.863-2h1.275l-.863 2h-1.275zm2.067 0l.863-2h1.275l-.864 2h-1.274zm2.066 0l.863-2h1.274l-.863 2h-1.274zm3.341 0h-1.274l.863-2h1.275l-.864 2zm7.46 0c-.552 0-1-.448-1-1s.448-1 1-1c.553 0 1 .448 1 1s-.447 1-1 1zm-15.597-16h-2.403l4-5h12l4 5h-2.403l-2.667-3h-9.86l-2.667 3z"/></svg>
+          <RiServerLine size={82} />
+          <h1 className="flex text-6xl font-semibold tracking-tighter">
             Devotops
           </h1>
-          <p className="text-xl font-light mt-5">
-          Automatisez le déploiement de vos applications avec notre plateforme Devotops
-          grâce à une interface simple et rapide
+          <p className="mt-5 text-xl font-light">
+            Automatisez le déploiement de vos applications avec notre plateforme Devotops
+            grâce à une interface simple et rapide
           </p>
-          <button className="white-button mt-5 big-button">Déployer mon projet</button>
+          <div className="flex space-x-4">
+            <motion.button whileHover={{ scale: 1.02 }}
+            className="mt-5 white-button big-button">Déployer mon projet</motion.button>
+            <motion.button whileHover={{ scale: 1.02 }}
+            className="mt-5 gray-button big-button">Mon espace</motion.button>
+          </div>
+          <div className="absolute bottom-0 flex items-center h-12 mt-auto">
+            <span className="text-xs italic opacity-75">works with</span>
+            <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
+          </div>
+          
         </div>
-        <div className="w-full max-w-lg"></div>
+      </Banner>
+      <div className="w-full h-32 bg-cgray-900">
+        <div className="flex items-center w-full h-full mx-auto space-x-20 max-w">
+          {TECHNOLOGIES.map(tech =>
+            <motion.img alt={ tech.name }
+              whileHover={{ filter: 'grayscale(0)', scale: 1.2, transition: { duration: 0.5, ease: 'circOut' }}}
+              src={tech.src} className="object-contain h-12 grayscale filter" />
+          )}
+        </div>
       </div>
-    </div>
+      <div className="w-full py-8 mx-auto max-w">
+        <h1 className="text-4xl font-medium tracking-tighter text-black">Une solution idéale et rapide</h1>
+      </div>
+    </main>
   );
 }
 
