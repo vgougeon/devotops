@@ -3,7 +3,7 @@ import * as PIXI from 'pixi.js';
 
 export default class Dot {
     initialSpacing = 25
-    initialRadius = 1.5
+    initialRadius = 2
     spacing = this.initialSpacing
     radius = this.initialRadius
     graphics: PIXI.Graphics = new PIXI.Graphics

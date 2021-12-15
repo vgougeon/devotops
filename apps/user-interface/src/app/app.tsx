@@ -1,8 +1,12 @@
 import Banner from "../components/layout/banner";
-import { motion } from 'framer-motion';
-import { RiServerFill, RiServerLine } from 'react-icons/ri'
+import { AnimatePresence, motion } from 'framer-motion';
+import { RiServerLine } from 'react-icons/ri'
 import { IoRocketSharp } from 'react-icons/io5'
 import { BsGithub } from 'react-icons/bs'
+import { Header } from "./layout/header";
+import HomePage from "./pages/home";
+import { Route, Router, Routes, useLocation } from 'react-router-dom'
+import DeployPage from "./pages/deploy";
 
 const TECHNOLOGIES = [
   { name: 'React', src: '/assets/technologies/react.webp' },
@@ -12,60 +16,14 @@ const TECHNOLOGIES = [
   { name: 'Node', src: '/assets/technologies/node.png' },
 ]
 export function App() {
+  const location = useLocation()
   return (
-    <main>
-      <header className="fixed top-0 z-20 w-full h-20 border-b border-white backdrop-filter backdrop-blur border-opacity-10">
-        <div className="flex items-center justify-between h-full mx-auto max-w">
-          <img src="assets/logo.png" className="object-contain h-8" />
-        </div>
-      </header>
-      <Banner>
-        <motion.div initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }} transition={{ duration: 3, ease: 'backOut' }}
-          className="relative w-full max-w-lg">
-          <RiServerLine size={82} />
-          <h1 className="flex text-6xl font-semibold tracking-tighter">
-            Devotops
-          </h1>
-          <p className="mt-5 text-xl font-light">
-            Automatisez le déploiement de vos applications avec notre plateforme Devotops
-            grâce à une interface simple et rapide
-          </p>
-          <div className="flex space-x-4">
-            <motion.button whileHover={{ scale: 1.02 }}
-              className="flex items-center mt-5 white-button big-button">
-              <IoRocketSharp className="mr-3" size={20} />
-              <span>Déployer mon projet</span>
-            </motion.button>
-            <motion.button whileHover={{ scale: 1.02 }}
-              className="flex items-center mt-5 gray-button big-button">
-              <BsGithub className="mr-3" size={20} />
-              <span>Mon espace</span>
-            </motion.button>
-          </div>
-        </motion.div>
-        <div className="absolute bottom-0 flex items-center h-12 mt-auto">
-          <span className="text-xs italic opacity-75">works with</span>
-          <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
-        </div>
-      </Banner>
-      <div className="w-full h-32 shadow-lg bg-cgray-900">
-        <div className="flex items-center w-full h-full mx-auto space-x-20 max-w">
-          {TECHNOLOGIES.map(tech =>
-            <motion.img alt={tech.name}
-              whileHover={{ filter: 'grayscale(0)', scale: 1.2, transition: { duration: 0.5, ease: 'circOut' } }}
-              src={tech.src} className="object-contain h-12 grayscale filter" />
-          )}
-        </div>
-      </div>
-      <div className="w-full py-16 mx-auto max-w">
-        <h2 className="text-4xl font-medium tracking-tighter text-black">Une solution idéale et rapide</h2>
-        <h3 className="text-2xl font-light text-black">Développez sereinement</h3>
-        <p className="max-w-lg mt-5 text-xl font-light">
-          Automatisez le déploiement de vos applications avec notre plateforme Devotops
-          grâce à une interface simple et rapide
-        </p>
-      </div>
+    <main className="overflow-hidden">
+      <Header />
+      <Routes location={location} key={ location.pathname}>
+        <Route path='/' element={<HomePage key={1} />}/>
+        <Route path='/deploy' element={<DeployPage key={2} />}/>
+      </Routes>
     </main>
   );
 }
