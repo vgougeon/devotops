@@ -1,20 +1,22 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Install') {
-            steps {
-                sh 'npm install'
+    dockerNode('node:17-alpine') {
+        stages {
+            stage('Install') {
+                steps {
+                    sh 'npm install'
+                }
             }
-        }
-        stage('build') {
-            steps {
-                sh 'npm run build'
+            stage('build') {
+                steps {
+                    sh 'npm run build'
+                }
             }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'npm run start'
+            stage('Deploy') {
+                steps {
+                    sh 'npm run start'
+                }
             }
         }
     }
