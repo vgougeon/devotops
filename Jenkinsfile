@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    dockerNode('node:17-alpine') {
+    node {
         stages {
             stage('Install') {
                 steps {
