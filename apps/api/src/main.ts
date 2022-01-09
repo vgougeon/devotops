@@ -1,11 +1,12 @@
 import * as express from 'express';
 import path = require('path');
+import authController from './app/auth.controller';
 
 const app = express();
+app.use(express.urlencoded())
+app.use(express.json())
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to api!' });
-});
+app.use('/api', authController)
 
 app.use('/', express.static(path.join(__dirname, '../user-interface/')))
 app.use('*', (req, res) => {

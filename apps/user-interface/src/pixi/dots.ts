@@ -9,14 +9,15 @@ export default class Dots {
     height = 600;
     speed = 0.05
     mouse: {x: number, y: number };
-
+    ticker = new PIXI.Ticker()
+    dots: Dot[] = [];
+    resizeEvent = this.resize.bind(this)
     constructor(container?: HTMLDivElement) {
-        console.log("Height : ", container!.style.height)
         container!.style.height = '600px'
         this.app = new PIXI.Application({
             resizeTo: container,
+            backgroundAlpha: 0,
             // antialias: true,
-            transparent: true,
         })
         this.container = new PIXI.Container()
         const filter = new RadialBlurFilter(0.5, [this.app.view.width / 4, this.app.view.height / 2])
@@ -29,25 +30,23 @@ export default class Dots {
         this.app.start();
         this.app.stage.addChild(this.container)
         this.mouse = { x: this.app.view.width / 2, y: this.app.view.height / 2 }
-
-        window.onresize = () => {
-            this.app.resize()
-            this.generateDots()
-        }
+        window.addEventListener('resize', this.resizeEvent)
 
         this.generateDots()
 
         gsap.to(shockwave, { time: 0.5, yoyo: true, duration: 6, repeat: -1, ease: Power3.easeInOut})
-        PIXI.Ticker.shared.add(() => {
+        this.ticker.add(() => {
             const mouse = this.app.renderer.plugins.interaction.mouse.global
 
             this.mouse.x += (mouse.x - this.mouse.x) * this.speed
             this.mouse.y += (mouse.y - this.mouse.y) * this.speed
-
-            // filter.center = [this.mouse.x, this.mouse.y]
-            // shockwave.center = [this.mouse.x, this.mouse.y]
         })
         
+    }
+
+    resize() {
+        this.app.resize()
+        this.generateDots()
     }
 
     generateDots() {
@@ -55,8 +54,16 @@ export default class Dots {
         const space = 25
         for (let x = 0; x < this.app.view.width / space; x++) {
             for (let y = 0; y < this.height / space; y++) {
-                new Dot(this.container, x, y)
+                this.dots.push(new Dot(this.container, x, y))
             }
         }
+    }
+
+    destroy() {
+        for(let dot of this.dots) dot.destroy()
+        window.removeEventListener('resize', this.resizeEvent)
+        this.ticker.stop()
+        this.ticker.destroy()
+        this.app.destroy()
     }
 }

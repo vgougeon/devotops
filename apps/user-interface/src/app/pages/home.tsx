@@ -50,10 +50,10 @@ export function HomePage() {
                     <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
                 </div>
             </Banner>
-            <div className="w-full h-32 shadow-lg bg-cgray-900">
+            <div className="w-full h-32 shadow-lg bg-neutral-900">
                 <div className="flex items-center w-full h-full mx-auto space-x-20 max-w">
-                    {TECHNOLOGIES.map(tech =>
-                        <motion.img alt={tech.name}
+                    {TECHNOLOGIES.map((tech, i) =>
+                        <motion.img key={i} alt={tech.name}
                             whileHover={{ filter: 'grayscale(0)', scale: 1.2, transition: { duration: 0.5, ease: 'circOut' } }}
                             src={tech.src} className="object-contain h-12 grayscale filter" />
                     )}

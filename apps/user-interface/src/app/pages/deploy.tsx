@@ -16,7 +16,7 @@ const TECHNOLOGIES = [
 export function DeployPage() {
     return (
         <PageTransition>
-            <div className="flex items-center justify-center w-full text-white banner bg-gradient-to-b from-cgray-900 to-red-900">
+            <div className="flex items-center justify-center w-full text-white banner bg-gradient-to-b from-neutral-900 to-red-900">
                 <motion.div initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }} transition={{ duration: 3, ease: 'backOut' }}
                     className="relative w-full max-w-lg">
@@ -50,7 +50,7 @@ export function DeployPage() {
                     <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
                 </div>
             </div>
-            <div className="w-full h-32 shadow-lg bg-cgray-900">
+            <div className="w-full h-32 shadow-lg bg-neutral-900">
                 <div className="flex items-center w-full h-full mx-auto space-x-20 max-w">
                     {TECHNOLOGIES.map(tech =>
                         <motion.img alt={tech.name}
