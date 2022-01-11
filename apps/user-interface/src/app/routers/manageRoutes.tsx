@@ -1,18 +1,15 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
-import ManageDashboard from "../manage/pages/dashboard";
-import { Sidenav } from "../manage/layout/sidenav";
+import { Route, Routes, useLocation } from 'react-router-dom';
+import ManageAdd from '../manage/pages/add';
+import ManageDashboard from '../manage/pages/dashboard';
+import ManageHome from '../manage/pages/home';
 
 export function ManageRoutes() {
-  const location = useLocation()
+  const location = useLocation();
   return (
-    <main className="h-screen w-screen overflow-hidden bg-neutral-800 flex">
-      <Sidenav />
-      <div className="h-screen grow overflow-y-auto">
-        <Routes location={location} key={location.pathname}>
-          <Route path='/' element={<ManageDashboard />} />
-        </Routes>
-      </div>
-
-    </main>
+    <Routes location={location} key={location.pathname}>
+      <Route path="/" element={<ManageHome />} key={location.pathname} />
+      <Route path="/add" element={<ManageAdd />} key={location.pathname} />
+      <Route path="/:projectName/dashboard" element={<ManageDashboard />} key={location.pathname} />
+    </Routes>
   );
 }

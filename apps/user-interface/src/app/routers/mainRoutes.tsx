@@ -8,11 +8,10 @@ export function MainRoutes() {
   const location = useLocation()
   return (
     <main className="overflow-hidden">
-      <Header />
       <Routes location={location} key={ location.pathname}>
-        <Route path='/authorization' element={<AuthorizationPage key={0} />}/>
-        <Route path='/' element={<HomePage key={1} />}/>
-        <Route path='/deploy' element={<DeployPage key={2} />}/>
+        <Route path='/authorization' element={<AuthorizationPage key={location.pathname} />}/>
+        <Route path='/' element={<HomePage key={location.pathname} />}/>
+        <Route path='/deploy' element={<DeployPage key={location.pathname} />}/>
       </Routes>
     </main>
   );
