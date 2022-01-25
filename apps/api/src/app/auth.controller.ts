@@ -13,4 +13,6 @@ router.post('/login', (req, res) => {
     })
 })
 
+router.get('/test', (req, res) => res.send('test'))
+
 export default router
