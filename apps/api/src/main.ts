@@ -1,6 +1,7 @@
 import * as express from 'express';
 import path = require('path');
 import authController from './app/auth.controller';
+require('dotenv').config()
 
 const app = express();
 app.use(express.urlencoded())
