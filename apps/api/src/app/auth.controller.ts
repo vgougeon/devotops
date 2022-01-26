@@ -10,6 +10,8 @@ router.post('/login', (req, res) => {
         code,
     }, { headers: { 'Accept': 'application/json' }}).then((response) => {
         res.send(response.data)
+    }).catch(() => {
+        res.send('error')
     })
 })
 
