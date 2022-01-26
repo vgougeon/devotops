@@ -5,10 +5,11 @@ const router = Router()
 router.post('/login', (req, res) => {
     const code: string = req.body.code;
     console.log('CLIENT ID : ', process.env.NX_GITHUB_CLIENT_ID)
-    console.log('CLIENT SECRET : ', process.env.NX_GITHUB_SECRET)
+    console.log('CLIENT SECRET : ', process.env.GITHUB_SECRET)
+    console.log(process.env)
     axios.post('https://github.com/login/oauth/access_token', {
         client_id: process.env.NX_GITHUB_CLIENT_ID,
-        client_secret: process.env.NX_GITHUB_SECRET,
+        client_secret: process.env.GITHUB_SECRET,
         code,
     }, { headers: { 'Accept': 'application/json' }}).then((response) => {
         res.send(response.data)
