@@ -19,7 +19,7 @@ export function HomePage() {
             <Banner>
                 <motion.div initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }} transition={{ duration: 3, ease: 'backOut' }}
-                    className="relative w-full max-w-lg">
+                    className="relative w-full max-w-lg px-10 2xl:px-0">
                     <RiServerLine size={82} />
                     <h1 className="flex text-6xl font-semibold tracking-tighter">
                         Devotops
@@ -28,7 +28,7 @@ export function HomePage() {
                         Automatisez le déploiement de vos applications avec notre plateforme Devotops
                         grâce à une interface simple et rapide
                     </p>
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-0 xl:space-x-4 flex-col xl:flex-row">
                         <Link to="/">
                             <motion.button whileHover={{ scale: 1.02 }}
                                 className="flex items-center mt-5 white-button big-button">
@@ -45,13 +45,13 @@ export function HomePage() {
                         </Link>
                     </div>
                 </motion.div>
-                <div className="absolute bottom-0 flex items-center h-12 mt-auto">
+                <div className="absolute bottom-0 flex items-center h-12 mt-auto left-10 2xl:left-0">
                     <span className="text-xs italic opacity-75">works with</span>
                     <img src={'/assets/technologies/github.png'} className="object-contain h-8" />
                 </div>
             </Banner>
             <div className="w-full h-32 shadow-lg bg-neutral-900">
-                <div className="flex items-center w-full h-full mx-auto space-x-20 max-w">
+                <div className="flex items-center w-full h-full mx-auto space-x-20 max-w px-10 2xl:px-0">
                     {TECHNOLOGIES.map((tech, i) =>
                         <motion.img key={i} alt={tech.name}
                             whileHover={{ filter: 'grayscale(0)', scale: 1.2, transition: { duration: 0.5, ease: 'circOut' } }}
@@ -59,12 +59,17 @@ export function HomePage() {
                     )}
                 </div>
             </div>
-            <div className="w-full py-16 mx-auto max-w">
-                <h2 className="text-4xl font-medium tracking-tighter text-black">Une solution idéale et rapide</h2>
+            <div className="w-full py-16 mx-auto max-w px-10 2xl:px-0">
+                <motion.h2 initial={{ x: -100, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}
+                    className="text-4xl font-medium tracking-tighter text-black">Une solution idéale et rapide</motion.h2>
                 <h3 className="text-2xl font-light text-black">Développez sereinement</h3>
                 <p className="max-w-lg mt-5 text-xl font-light">
                     Automatisez le déploiement de vos applications avec notre plateforme Devotops
                     grâce à une interface simple et rapide
+                </p>
+                <p className="max-w-lg mt-5 text-xl font-light">
+                    Connectez vous via votre compte github et synchroniser le projet de votre choix, et une méthode de déploiement.<br />
+                    <b>Nginx, nodejs, php</b>, et d'autres alternatives sont préconfigurées pour vous faire gagner encore plus de temps !
                 </p>
             </div>
         </PageTransition>

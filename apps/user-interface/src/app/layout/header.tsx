@@ -21,11 +21,11 @@ export function Header({ children }: any) {
     const code = useObservable(authService.code)
     return (
         <>
-        <header className="fixed top-0 z-20 w-full h-20 border-b border-white backdrop-filter backdrop-blur border-opacity-10">
+        <header className="fixed top-0 z-20 w-full h-20 border-b border-white backdrop-filter backdrop-blur border-opacity-10 px-5">
             <div className="flex items-center justify-between h-full mx-auto space-x-20 max-w w-full">
                 <div className="flex items-center h-full space-x-20">
                     <img src="assets/logo.png" className="object-contain h-8" />
-                    <nav className="flex items-center space-x-16">
+                    <nav className="items-center space-x-16 hidden md:flex">
                         <AnimateSharedLayout>
                             <Link to="/">
                                 <A active={location.pathname === '/'}>Home</A>
@@ -55,7 +55,7 @@ export function Header({ children }: any) {
                     {!user && !code &&
                         <a href={link}>
                             <motion.button whileTap={{ scale: 0.95 }}
-                                className="bg-black bg-opacity-20 hover:bg-opacity-10 shadow text-white border-white border-opacity-20 hover:border-opacity-40 text-xs px-3 py-2 border rounded flex items-center space-x-3">
+                                className="bg-black bg-opacity-10 hover:bg-opacity-75 shadow text-white border-white border-opacity-20 hover:border-opacity-40 text-xs px-3 py-2 border rounded flex items-center space-x-3">
                                 <FaGithub size={20} />
                                 <span>Login with github</span>
                             </motion.button>
