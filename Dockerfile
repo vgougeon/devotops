@@ -11,4 +11,4 @@ RUN npm run build
 
 RUN ls
 
-ENTRYPOINT ["node", "./dist/api/main.js"]
+ENTRYPOINT ["node", "./dist/apps/api/main.js"]
