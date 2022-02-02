@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": ".",
   "scripts": {
-    "start": "node dist/apps/api/main.js",
+    "start": "ts-node resetDb.ts && knex migrate:rollback --all && knex migrate:latest && knex seed:run && node dist/apps/api/main.js",
     "build": "nx run-many --target=build --projects=api,user-interface",
     "db": "ts-node resetDb.ts && knex migrate:rollback --all && knex migrate:latest && knex seed:run",
     "test": "nx test"
