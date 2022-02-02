@@ -11,10 +11,10 @@ const db = Knex({
 });
 
 
-db.raw(`DROP DATABASE ${process.env.DB_NAME}`)
-.then(() => console.debug(`DEV - DROP DATABASE ${process.env.DB_NAME}`))
-.catch(() => console.debug(`DEV - DATABASE DOES NOT EXIST ${process.env.DB_NAME}`))
-.then(() => db.raw(`CREATE DATABASE ${process.env.DB_NAME}`))
-.then(() => console.debug(`DEV - CREATE DATABASE ${process.env.DB_NAME}`))
-.catch(() => console.debug(`DEV - DATABASE COULDN'T BE CREATED ${process.env.DB_NAME}`))
+db.raw(`DROP DATABASE ${process.env.NX_DB_NAME}`)
+.then(() => console.debug(`DEV - DROP DATABASE ${process.env.NX_DB_NAME}`))
+.catch(() => console.debug(`DEV - DATABASE DOES NOT EXIST ${process.env.NX_DB_NAME}`))
+.then(() => db.raw(`CREATE DATABASE ${process.env.NX_DB_NAME}`))
+.then(() => console.debug(`DEV - CREATE DATABASE ${process.env.NX_DB_NAME}`))
+.catch(() => console.debug(`DEV - DATABASE COULDN'T BE CREATED ${process.env.NX_DB_NAME}`))
 .then(() => process.exit())
