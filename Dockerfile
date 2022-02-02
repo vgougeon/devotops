@@ -22,8 +22,8 @@ ENV NX_DB_PASSWORD=$NX_DB_PASSWORD
 ENV NX_DB_PORT=$NX_DB_PORT
 
 RUN npm install
-RUN npm run build
-RUN env
+# RUN npm run build
+RUN whoami
 RUN npm run db
 
 ENTRYPOINT ["node", "./dist/apps/api/main.js"]
