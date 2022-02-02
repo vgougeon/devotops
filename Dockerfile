@@ -4,7 +4,11 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
+RUN ls
+
 RUN npm install
 RUN npm run build
+
+RUN ls
 
 ENTRYPOINT ["node", "./dist/api/main.js"]
