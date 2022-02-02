@@ -8,14 +8,12 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN ls
+ENV NX_GITHUB_SECRET=$NX_GITHUB_SECRET
+ENV NX_GITHUB_CLIENT_ID=$NX_GITHUB_CLIENT_ID
+ENV NX_GITHUB_REDIRECT_URI=$NX_GITHUB_REDIRECT_URI
 
-RUN echo $NX_GITHUB_SECRET
-
-# RUN npm install
-# RUN npm run build
-
-# RUN ls
+RUN npm install
+RUN npm run build
 
 
-# ENTRYPOINT ["node", "./dist/apps/api/main.js"]
+ENTRYPOINT ["node", "./dist/apps/api/main.js"]
