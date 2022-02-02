@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node dist/apps/api/main.js",
     "build": "nx run-many --target=build --projects=api,user-interface",
+    "db": "ts-node resetDb.ts && knex migrate:rollback --all && knex migrate:latest && knex seed:run",
     "test": "nx test"
   },
   "private": true,
@@ -16,6 +17,8 @@
     "express": "4.17.1",
     "framer-motion": "^5.3.3",
     "gsap": "^3.8.0",
+    "knex": "^1.0.2",
+    "mysql2": "^2.3.3",
     "pixi-filters": "^4.1.5",
     "pixi.js": "^6.2.0",
     "react": "17.0.2",
