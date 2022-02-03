@@ -4,10 +4,11 @@ import { AnimateSharedLayout, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { useObservable } from "react-use";
+import { useObservable, useTitle } from "react-use";
 import { Select } from "../../layout/components/select";
 
 export default function ManageAdd() {
+  useTitle('New project - Devotops')
   const projects = useObservable(authService.projects)
   const [selectedProject, setSelectedProject] = useState(null)
   useEffect(() => {

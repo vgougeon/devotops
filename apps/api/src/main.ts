@@ -1,13 +1,16 @@
 import * as express from 'express';
 import path = require('path');
 import authController from './app/auth.controller';
+import userController from './app/user.controller';
 require('dotenv').config()
+require('./db/db')
 
 const app = express();
 app.use(express.urlencoded())
 app.use(express.json())
 
 app.use('/api', authController)
+app.use('/api', userController)
 
 app.use('/', express.static(path.join(__dirname, '../user-interface/')))
 app.use('*', (req, res) => {

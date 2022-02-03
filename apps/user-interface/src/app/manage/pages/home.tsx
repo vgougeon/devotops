@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { GoGlobe, GoRepo } from 'react-icons/go';
 import { IoRocketSharp } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { useTitle } from 'react-use';
 
 export default function ManageHome() {
+  useTitle('Home - Devotops')
   return (
     <>
       <Banner>

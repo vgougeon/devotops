@@ -1,8 +1,10 @@
 import Banner from "apps/user-interface/src/components/layout/banner";
 import { motion } from "framer-motion";
 import { GoGlobe, GoRepo } from "react-icons/go";
+import { useTitle } from "react-use";
 
 export default function ManageDashboard() {
+    useTitle('Dashboard - Devotops')
     return (
         <>
             <Banner>
