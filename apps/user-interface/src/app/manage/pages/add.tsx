@@ -62,7 +62,7 @@ export default function ManageAdd() {
           </AnimateSharedLayout>
         </div> */}
         <Listbox value={selectedP} onChange={setSelectedP}>
-              <div className="relative mt-1">
+              <div className="relative mt-3">
                 <Listbox.Button className="relative w-full py-3 pl-5 pr-10 text-left group
                 cursor-pointer bg-neutral-900 text-white rounded-lg shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
                   <span className="block truncate">{selectedP || 'Select a project'}</span>
