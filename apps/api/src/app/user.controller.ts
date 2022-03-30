@@ -12,6 +12,7 @@ router.get('/users', async (req, res) => {
 router.post('/projects', async (req, res) => {
     const [id] = await db('projects').insert({
         name: req.body.project.name,
+        template: req.body.template,
         githubId: req.body.project.owner.id,
         url: req.body.project.clone_url,
     }, "*")
@@ -25,7 +26,7 @@ router.post('/projects', async (req, res) => {
             template: project.template
         }).then(() => {
             console.log("PROJECT STARTED", project.id, project.template)
-        })
+        }).catch(() => { console.log('no worker')})
 
         return res.send(project)
     }

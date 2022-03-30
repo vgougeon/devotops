@@ -1,16 +1,11 @@
 import { Listbox, Transition } from "@headlessui/react";
 import authService from "apps/user-interface/src/services/auth.service";
-import classNames from "classnames";
-import { AnimateSharedLayout, motion } from "framer-motion";
-import { Fragment, useEffect, useRef, useState } from "react";
-import { BsFillCaretDownFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
 import { useObservable, useTitle } from "react-use";
-import { Select } from "../../layout/components/select";
 import { HiCheck, HiOutlineChevronDoubleDown } from 'react-icons/hi'
 import managerService from "apps/user-interface/src/services/manager.service";
 
-const templates = ["Ansible: NGINX", "Ansible: NODE.JS"]
+const templates = ["nginx", "nodejs"]
 export default function ManageAdd() {
   useTitle('New project - Devotops')
   const projects = useObservable(authService.projects)
@@ -40,32 +35,6 @@ export default function ManageAdd() {
             The repository that you want to clone and deploy on Devotops
           </span>
         </div>
-        {/* <div className="flex flex-col col-span-3 bg-neutral-900 rounded space-y-2 p-2">
-          <AnimateSharedLayout>
-            {projects?.map((project: any) =>
-              <div onClick={() => setSelectedProject(project)}
-                className={classNames(
-                  "w-full h-24 border-2 border-white rounded p-3 text-white shadow hover:shadow-lg hover:border-opacity-20 cursor-pointer relative",
-                  { "border-opacity-5 bg-neutral-800 hover:border-opacity-20": selectedProject !== project },
-                  { "border-opacity-75 bg-green-900 hover:border-opacity-100": selectedProject === project },
-                )}>
-                <div className="flex">
-                  {selectedProject === project && <motion.div className="absolute w-0.5 h-full -left-2 top-0 rounded bg-green-400" layoutId="highlighted-project"></motion.div>}
-                  <div className="flex flex-col space-y-1">
-                    <span className="text-sm">
-                      <span className="bg-green-500 bg-opacity-75 px-2 py-0.5 mr-1 rounded text-white w-fit text-xs">{project?.private ? 'Private' : 'Public'}</span>
-                      {" "} {project?.full_name}
-                    </span>
-                    <span className="opacity-75 text-sm font-light">{project?.description || 'This project has no description'}</span>
-                    <a href={project?.html_url} target="_blank" className="text-blue-400 text-sm hover:underline hover:text-blue-300">
-                      {project?.html_url || 'This project has no description'}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            )}
-          </AnimateSharedLayout>
-        </div> */}
         <Listbox value={selectedP} onChange={setSelectedP}>
               <div className="relative mt-3">
                 <Listbox.Button className="relative w-full py-3 pl-5 pr-10 text-left group
