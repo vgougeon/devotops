@@ -4,8 +4,11 @@ import classnames from 'classnames';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { BsFillCaretDownFill } from 'react-icons/bs';
-import { GoGlobe, GoHome, GoPerson, GoRepo, GoScreenFull } from 'react-icons/go';
-import { RiTerminalBoxFill } from 'react-icons/ri';
+import { FaCross } from 'react-icons/fa';
+import { GoGlobe, GoHome, GoPerson, GoRepo, GoScreenFull, GoStop } from 'react-icons/go';
+import { HiStop } from 'react-icons/hi';
+import { IoRemove, IoRemoveCircle } from 'react-icons/io5';
+import { RiSwitchFill, RiSwitchLine, RiTerminalBoxFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useLocation, useObservable } from 'react-use';
 
@@ -19,7 +22,7 @@ export function ManageLayout({ children }: any) {
       >
         <div className="h-28 w-full flex items-center justify-between">
           <Link to="/">
-            <motion.img whileHover={{ scale: 1.2 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.6}}  whileTap={{ scale: 1 }}
+            <motion.img whileHover={{ scale: 1.2 }} transition={{ duration: 0.5, type: 'spring', bounce: 0.6 }} whileTap={{ scale: 1 }}
               src={`/assets/logo.png`}
               className="w-12 h-12 p-2 rounded-lg bg-blue-600 hover:bg-blue-500"
             />
@@ -45,19 +48,40 @@ export function ManageLayout({ children }: any) {
         </div>
         <hr className="border-t border-white border-opacity-5" />
         <nav className="flex flex-col space-y-2 mt-4">
+          {project && <>
+            <div className="w-full py-2 flex px-4 flex-col text-white relative hover:bg-white hover:bg-opacity-5 rounded">
+              <h2 className="text-white text-lg font-semibold">
+                <span className="text-sm text-blue-300">DEVOTOPS </span>
+                / {project?.name}
+              </h2>
+              <span className="text-gray-400 text-sm">{project?.url}</span>
+              <button className="h-8 px-2 bg-white bg-opacity-0 rounded hover:bg-blue-700 absolute right-2 top-0 bottom-0 my-auto" onClick={() => managerService.setProject(null)}>
+                <IoRemove />
+              </button>
+            </div>
+          </>}
           <AnimateSharedLayout>
-            <NavItem name="Home" to="/manage" exact icon={<GoHome />} />
-            <NavItem
-              name="New project"
-              to="/manage/add"
-              exact
-              icon={<GoRepo />}
-            />
+            {!project && <>
+              <NavItem name="Home" to="/manage" exact icon={<GoHome />} />
+              <NavItem
+                name="New project"
+                to="/manage/add"
+                exact
+                icon={<GoRepo />}
+              />
+              <NavItem
+                name="My projects"
+                to="/manage/projects"
+                exact
+                icon={<GoScreenFull />}
+              />
+            </>
+            }
             {project && (
               <>
                 <NavItem
                   name="Dashboard"
-                  to="/manage"
+                  to="/manage/dashboard"
                   exact
                   icon={<GoGlobe />}
                 />

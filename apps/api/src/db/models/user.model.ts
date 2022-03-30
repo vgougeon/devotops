@@ -5,7 +5,7 @@ class User extends Model {
     return 'users';
   }
 
-  githubId: string;
+  githubId: number;
   username: string;
   firstName: string;
   lastName: string;

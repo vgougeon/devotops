@@ -5,6 +5,7 @@ import { distinctUntilChanged, filter, map, mergeMap, skipWhile, switchMap, take
 class AuthService {
     code = new BehaviorSubject<string>('');
     token = new BehaviorSubject<string>('');
+    appToken = new BehaviorSubject<string>('');
     user = new BehaviorSubject<any>(null)
 
     projects = new BehaviorSubject<any[]>([])
@@ -12,17 +13,9 @@ class AuthService {
     constructor() {
         this.code.pipe(distinctUntilChanged(), filter(v => !!v)).subscribe(code => {
             axios.post('/api/login', { code }).then((response) => {
-                this.token.next(response.data.access_token)
-            })
-        })
-
-        this.token.pipe(distinctUntilChanged(), filter(v => !!v)).subscribe(token => {
-            axios.post('https://api.github.com/user', null, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            }).then(response => {
-                this.user.next(response.data)
+                this.token.next(response.data.token)
+                this.appToken.next(response.data.appToken)
+                this.user.next(response.data.user)
             })
         })
     }

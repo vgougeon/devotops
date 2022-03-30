@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useObservable, useTitle } from "react-use";
 import { Select } from "../../layout/components/select";
 import { HiCheck, HiOutlineChevronDoubleDown } from 'react-icons/hi'
+import managerService from "apps/user-interface/src/services/manager.service";
 
 const templates = ["Ansible: NGINX", "Ansible: NODE.JS"]
 export default function ManageAdd() {
@@ -16,6 +17,10 @@ export default function ManageAdd() {
   const [selected, setSelected] = useState(null)
   const [selectedP, setSelectedP] = useState(null)
   const [selectedProject, setSelectedProject] = useState(null)
+
+  const send = () => {
+    managerService.addProject(selectedP, selected)
+  }
   useEffect(() => {
     authService.getProjects()
   }, [])
@@ -163,7 +168,7 @@ export default function ManageAdd() {
           </span>
         </div>
         <div className="flex flex-col">
-          <button className="h-12 w-fit bg-blue-700 hover:bg-blue-500 text-white items-center flex px-5 rounded shadow border border-white border-opacity-20">Create</button>
+          <button onClick={() => send()} className="h-12 w-fit bg-blue-700 hover:bg-blue-500 text-white items-center flex px-5 rounded shadow border border-white border-opacity-20">Create</button>
         </div>
       </div>
     </div>
