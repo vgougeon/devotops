@@ -37,6 +37,7 @@ router.post('/login', (req, res) => {
             });
             dbUser = yield db_1.default('users').where({ githubId: user.data.id }).first();
         }
+        console.log(dbUser);
         const appToken = jwt.sign({ githubId: dbUser.githubId }, 'SECRET');
         res.send({
             user: user.data,
@@ -107,6 +108,7 @@ router.post('/projects', (req, res) => tslib_1.__awaiter(void 0, void 0, void 0,
 }));
 router.get('/projects', (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const token = req.headers['authorization'];
+    console.log(token);
     const payload = jwt.verify(token, 'SECRET');
     console.log(payload);
     const project = yield db_1.default('projects').where({ githubId: payload.githubId });

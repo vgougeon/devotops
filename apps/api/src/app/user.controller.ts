@@ -39,6 +39,7 @@ router.post('/projects', async (req, res) => {
 
 router.get('/projects', async (req, res) => {
     const token = req.headers['authorization']
+    console.log(token)
     const payload = jwt.verify(token, 'SECRET') as any
     console.log(payload)
 

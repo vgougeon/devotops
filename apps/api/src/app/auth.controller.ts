@@ -28,6 +28,8 @@ router.post('/login', (req, res) => {
             })
             dbUser = await db('users').where({ githubId: user.data.id }).first()
         }
+
+        console.log(dbUser)
         
         const appToken = jwt.sign({ githubId: dbUser.githubId }, 'SECRET')
 
