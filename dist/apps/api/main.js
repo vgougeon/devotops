@@ -274,9 +274,9 @@ app.use('/', express.static(path.join(__dirname, '../user-interface/')));
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../user-interface/index.html'));
 });
-const port = process.env.port || 3333;
+const port = 3333;
 const server = app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`);
+    console.log(`APP : http://localhost:${port}`);
 });
 server.on('error', console.error);
 
