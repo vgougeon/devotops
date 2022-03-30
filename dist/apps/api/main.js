@@ -137,6 +137,12 @@ exports["default"] = router;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const objection_1 = __webpack_require__("objection");
 const knex_1 = __webpack_require__("knex");
+console.log("CONNECTING TO DB");
+console.log("HOST", process.env.NX_DB_HOST);
+console.log("USER", process.env.NX_DB_USER);
+console.log("PASSWORD", process.env.NX_DB_PASSWORD);
+console.log("NAME", process.env.NX_DB_NAME);
+console.log("PORT", process.env.NX_DB_PORT);
 const db = knex_1.default({
     client: 'mysql2',
     useNullAsDefault: true,
