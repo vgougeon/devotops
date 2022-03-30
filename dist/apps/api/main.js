@@ -93,7 +93,7 @@ router.post('/projects', (req, res) => tslib_1.__awaiter(void 0, void 0, void 0,
     }, "*");
     const project = yield db_1.default('projects').where({ id }).first();
     try {
-        axios_1.default.post('http://localhost/worker/start-container.sh', {
+        axios_1.default.post('http://localhost/worker/start-container', {
             url: project.url,
             id: project.id,
             template: project.template

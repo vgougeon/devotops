@@ -20,7 +20,7 @@ router.post('/projects', async (req, res) => {
     const project = await db('projects').where({ id }).first()
 
     try {
-        axios.post('http://localhost/worker/start-container.sh', {
+        axios.post('http://localhost/worker/start-container', {
             url: project.url,
             id: project.id,
             template: project.template

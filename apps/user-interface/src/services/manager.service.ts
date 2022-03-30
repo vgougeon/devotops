@@ -16,7 +16,7 @@ class ManagerService {
         if (this.currentProject.value) {
             axios.get('/api/projects/' + this.currentProject.value.id).then(res => this.status.next(this.parseStatus(res.data.cmd)))
                 .catch(err => {
-                    this.status.next(this.parseStatus("2ea485e0d00b_1-_0.00%_2.445MiB / 1.904GiB_0.13%_80/tcp -> 0.0.0.0:10000\n"))
+                    this.status.next(this.parseStatus("2ea485e0d00b_1-_0.00%_ERROR / 1.904GiB_0.13%_80/tcp -> 0.0.0.0:10000\n"))
                 })
         }
     }
