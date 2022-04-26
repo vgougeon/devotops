@@ -9,6 +9,7 @@ class ManagerService {
     constructor() {
         this.currentProject.subscribe(project => this.loop())
 
+        console.log("Manager service INIT")
         setInterval(this.loop.bind(this), 5000)
     }
 
