@@ -32,6 +32,7 @@ class ManagerService {
             memUsage: s[3],
             memPerc: s[4],
             port: s[5],
+            portParsed: s[5].split(':').pop()
         }
     }
 

@@ -121,9 +121,10 @@ router.get('/projects/:id', (req, res) => tslib_1.__awaiter(void 0, void 0, void
         return res.status(404);
     try {
         const status = yield axios_1.default.post('http://localhost/worker/project-status', { id: req.params.id });
-        res.send(status);
+        res.send(status.data);
     }
-    catch (_b) {
+    catch (err) {
+        console.log(err);
         res.status(404).send('Worker offline');
     }
 }));

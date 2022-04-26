@@ -1,4 +1,5 @@
 import managerService from "apps/user-interface/src/services/manager.service";
+import { Link } from "react-router-dom";
 import { useObservable, useTitle } from "react-use";
 
 export default function ManageDashboard() {
@@ -22,6 +23,11 @@ export default function ManageDashboard() {
                             <span className="text-sm opacity-80">{value}</span>
                         </div>
                     )}
+                </div>
+                <div className="bg-white bg-opacity-10 h-12 w-full text-white">
+                    <a target={'_blank'} href={'http://54.37.228.12:' + status.portParsed } className="h-16 flex items-center justify-center bg-blue-500 rounded px-2">
+                        
+                    </a>
                 </div>
             </div>
             <div className="relative w-[400px] shadow h-fit">
