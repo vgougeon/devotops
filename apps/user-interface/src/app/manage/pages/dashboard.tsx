@@ -25,9 +25,9 @@ export default function ManageDashboard() {
                     )}
                 </div>
                 <div className="bg-white bg-opacity-10 h-12 w-full text-white">
-                    <a target={'_blank'} href={'http://54.37.228.12:' + status.portParsed } className="h-16 flex items-center justify-center bg-blue-500 rounded px-2">
+                    { status && <a target={'_blank'} href={'http://54.37.228.12:' + status.portParsed } className="h-16 flex items-center justify-center bg-blue-500 rounded px-2">
                         
-                    </a>
+                    </a> }
                 </div>
             </div>
             <div className="relative w-[400px] shadow h-fit">
