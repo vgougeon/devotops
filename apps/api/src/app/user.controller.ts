@@ -55,7 +55,7 @@ router.get('/projects/:id', async (req, res) => {
 
     try {
         const status = await axios.post('http://localhost/worker/project-status', { id: req.params.id })
-        res.send(status)
+        res.send(status.data)
     }
     catch(err) {
         console.log(err)
