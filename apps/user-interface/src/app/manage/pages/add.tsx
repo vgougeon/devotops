@@ -5,7 +5,7 @@ import { useObservable, useTitle } from "react-use";
 import { HiCheck, HiOutlineChevronDoubleDown } from 'react-icons/hi'
 import managerService from "apps/user-interface/src/services/manager.service";
 
-const templates = ["nginx", "nodejs"]
+const templates = ["nginx", "nodejs", "php"]
 export default function ManageAdd() {
   useTitle('New project - Devotops')
   const projects = useObservable(authService.projects)
