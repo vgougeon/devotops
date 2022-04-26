@@ -54,7 +54,7 @@ router.get('/projects/:id', async (req, res) => {
     if (!project) return res.status(404)
 
     try {
-        const status = await axios.post('http://localhost/worker/project-status', { id: req.params.id })
+        const status = await axios.post('http://localhost/worker/project-status', { id: req.params.id }).catch(err => console.log(err))
         res.send(status)
     }
     catch {

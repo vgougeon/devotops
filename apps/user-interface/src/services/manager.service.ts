@@ -9,7 +9,7 @@ class ManagerService {
     constructor() {
         this.currentProject.subscribe(project => this.loop())
 
-        setInterval(this.loop.bind(this), 500)
+        setInterval(this.loop.bind(this), 5000)
     }
 
     loop() {
